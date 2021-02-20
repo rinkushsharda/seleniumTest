@@ -28,8 +28,20 @@ public class TestBase {
 
     public void initialize() {
 
-        driverManager = DriverManagerFactory.getDriverManager(DriverManager.DriverType.CHROME);
-        driver = driverManager.getWebDriver();
+        switch(prop.getProperty("browser")){
+
+            case "FF":
+                driverManager = DriverManagerFactory.getDriverManager(DriverManager.DriverType.FF);
+                break;
+            case "CHROME":
+                driverManager = DriverManagerFactory.getDriverManager(DriverManager.DriverType.CHROME);
+                break;
+            default:
+                driverManager = DriverManagerFactory.getDriverManager(DriverManager.DriverType.CHROME);
+
+        }
+
+       driver = driverManager.getWebDriver();
         driver.get(prop.getProperty("URL"));
 
     }
