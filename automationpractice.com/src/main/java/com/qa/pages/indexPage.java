@@ -42,11 +42,12 @@ public class indexPage extends TestBase {
         return logoImage.isDisplayed();
     }
 
-    public void validateSignIn(){
+    public HomePage validateSignIn(){
         link_signIn.click();
         input_user.sendKeys(prop.getProperty("user"));
         input_password.sendKeys(prop.getProperty("password"));
         button_signin.click();
+        return new HomePage();
     }
 
     public String validateBlousePrice(){

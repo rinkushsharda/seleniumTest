@@ -4,10 +4,7 @@ import com.qa.base.TestBase;
 import com.qa.pages.indexPage;
 import com.qa.utils.TestUtility;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 
@@ -50,6 +47,11 @@ public class indexPageTest extends TestBase {
     public Object[][] data() throws IOException {
         Object data[][] = TestUtility.getTestData();
         return  data;
+    }
+
+    @AfterMethod
+    public  void tearDown(){
+        driver.quit();
     }
 
 }
