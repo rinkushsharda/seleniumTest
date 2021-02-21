@@ -25,24 +25,35 @@ public class indexPage extends TestBase {
     @FindBy(xpath = "//a[@class=\"product-name\" and @title=\"Blouse\" and contains(text(),\"Blouse\")]//ancestor::div[1]//div[@class=\"content_price\"]")
     WebElement link_blouse_price;
 
+    @FindBy(xpath = "//img[@class=\"logo img-responsive\"]")
+    WebElement logoImage;
+
+
     public  indexPage(){
 
         PageFactory.initElements(driver, this);
     }
 
-    public void validate(){
-
-        System.out.println(link_blouse_price.getText());
-
-
+    public String validateIndexPageTitle(){
+        return driver.getTitle();
     }
 
-    public void signin(){
+    public boolean validateLogoImage(){
+        return logoImage.isDisplayed();
+    }
+
+    public void validateSignIn(){
         link_signIn.click();
         input_user.sendKeys(prop.getProperty("user"));
         input_password.sendKeys(prop.getProperty("password"));
         button_signin.click();
     }
+
+    public String validateBlousePrice(){
+        return link_blouse_price.getText();
+    }
+
+
 
 
 }

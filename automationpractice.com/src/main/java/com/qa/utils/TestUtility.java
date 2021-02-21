@@ -25,10 +25,10 @@ public class TestUtility extends TestBase {
         int column = sheet.getRow(0).getLastCellNum();
         System.out.println("column: " + column);
 
-        Object data[][] = new Object[rows][column];
+        Object data[][] = new Object[rows-1][column];
 
-        for (int r = 0; r <= rows - 1; r++) {
-            XSSFRow row = sheet.getRow(r + 1);
+        for (int r = 0; r < rows - 1; r++) {
+            XSSFRow row = sheet.getRow(r +1);
 
             for (int c = 0; c < column; c++) {
 
@@ -37,7 +37,6 @@ public class TestUtility extends TestBase {
                 switch (cell.getCellType()) {
                     case XSSFCell.CELL_TYPE_NUMERIC:
                         data[r][c] = cell.getNumericCellValue();
-                                System.out.println("in test   "+data[r][c]);
                         break;
                     case XSSFCell.CELL_TYPE_STRING:
                         data[r][c] = cell.getStringCellValue();
@@ -48,11 +47,9 @@ public class TestUtility extends TestBase {
 
                 }
 
-
             }
 
         }
-
         return data;
 
     }
